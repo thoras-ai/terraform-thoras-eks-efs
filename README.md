@@ -13,8 +13,7 @@ Use this Terraform module as a pre-step to installing Thoras when:
 
 ```hcl
 module "thoras_efs" {
-  source                     = "thoras/thoras"
-  version                    = "3.1.1"
+  source                     = "github.com/thoras-ai/terraform-thoras-eks-efs?ref=1.0.0
   cluster_name               = "my-cluster"
   region                     = "us-east-1"
   cluster_node_group_subnets = [

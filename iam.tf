@@ -38,5 +38,5 @@ data "external" "thumbprint" {
 resource "aws_iam_openid_connect_provider" "cluster" {
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = [data.external.thumbprint.result.thumbprint]
-  url             = data.aws_eks_cluster.target.identity.0.oidc.0.issuer
+  url             = var.identity_oidc_issuer
 }

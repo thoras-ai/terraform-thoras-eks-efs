@@ -53,6 +53,8 @@ module "thoras_efs" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | `region` | AWS region hosting target EKS and EFS resources | `string` | `null` | yes |
+| `vpc_id` | AWS VPC hosting target EKS and EFS resources | `string` | `null` | yes |
+| `identity_oidc_issuer` | OIDC issuer URL for the EKS cluster | `string` | `null` | yes |
 | `cluster_name` | name of EKS cluster accessing EFS volume        | `string` | `null` | yes |
 | `cluster_node_group_subnets` | EKS node group subnets that will access EFS | `list(string)` | `null` | yes |
 | `efs_addon_version` | version of EFS addon for EKS | `string` | `v1.7.7-eksbuild.1` | yes |

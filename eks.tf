@@ -1,7 +1,3 @@
-data "aws_eks_cluster" "target" {
-  name = var.cluster_name
-}
-
 data "aws_subnet" "nodes_for_efs_access" {
   for_each = toset(var.cluster_node_group_subnets)
   id       = each.value

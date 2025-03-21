@@ -4,7 +4,7 @@ resource "aws_security_group" "efs" {
 
   # vpc_config is technically a list but in practice
   # contains only one element
-  vpc_id = data.aws_eks_cluster.target.vpc_config.0.vpc_id
+  vpc_id = var.vpc_id
   tags   = local.security_group_tags
 }
 

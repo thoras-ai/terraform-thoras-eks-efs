@@ -10,7 +10,7 @@ locals {
   )
 
   cluster_oidc_url_stripped = trimprefix(
-    data.aws_eks_cluster.target.identity.0.oidc.0.issuer,
+    var.identity_oidc_issuer,
     "https://"
   )
 

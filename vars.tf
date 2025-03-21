@@ -10,6 +10,18 @@ variable "cluster_name" {
   nullable    = false
 }
 
+variable "vpc_id" {
+  type        = string
+  description = "VPC ID hosting target EKS and EFS resources"
+  nullable    = false
+}
+
+variable "identity_oidc_issuer" {
+  type        = string
+  description = "OIDC issuer URL for the EKS cluster"
+  nullable    = false
+}
+
 variable "cluster_node_group_subnets" {
   type        = list(string)
   description = "EKS node group subnets that will access EFS"

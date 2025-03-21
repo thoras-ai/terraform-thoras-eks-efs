@@ -13,14 +13,16 @@ Use this Terraform module as a pre-step to installing Thoras when:
 
 ```hcl
 module "thoras_efs" {
-  source                     = "github.com/thoras-ai/terraform-thoras-eks-efs?ref=1.0.0
-  cluster_name               = "my-cluster"
-  region                     = "us-east-1"
-  cluster_node_group_subnets = [
-    "subnet-aaaa",
-    "subnet-bbbb",
-    "subnet-cccc"
-  ]
+    source                     = "github.com/thoras-ai/terraform-thoras-eks-efs?ref=1.0.0
+    vpc_id                     = "<my vpc_ id>"
+    identity_oidc_issuer       = "https://<my cluster oidc issuer url>"
+    cluster_name               = "my-cluster"
+    region                     = "us-east-1"
+    cluster_node_group_subnets = [
+        "subnet-aaaa",
+        "subnet-bbbb",
+        "subnet-cccc"
+    ]
 }
 ```
 
@@ -53,6 +55,8 @@ module "thoras_efs" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | `region` | AWS region hosting target EKS and EFS resources | `string` | `null` | yes |
+| `vpc_id` | AWS VPC hosting target EKS and EFS resources | `string` | `null` | yes |
+| `identity_oidc_issuer` | OIDC issuer URL for the EKS cluster | `string` | `null` | yes |
 | `cluster_name` | name of EKS cluster accessing EFS volume        | `string` | `null` | yes |
 | `cluster_node_group_subnets` | EKS node group subnets that will access EFS | `list(string)` | `null` | yes |
 | `efs_addon_version` | version of EFS addon for EKS | `string` | `v1.7.7-eksbuild.1` | yes |

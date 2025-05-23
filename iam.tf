@@ -24,8 +24,6 @@ resource "aws_iam_role" "cluster_efs_driver" {
       },
     ]
   })
-
-  managed_policy_arns = [data.aws_iam_policy.efs_driver.arn]
 }
 
 data "external" "thumbprint" {
@@ -39,4 +37,9 @@ resource "aws_iam_openid_connect_provider" "cluster" {
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = [data.external.thumbprint.result.thumbprint]
   url             = var.identity_oidc_issuer
+}
+
+resource "aws_iam_role_policy_attachment" "efs_driver" {
+  policy_arn = data.aws_iam_policy.efs_driver.arn
+  role       = aws_iam_role.cluster_efs_driver.name
 }

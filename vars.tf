@@ -49,7 +49,7 @@ variable "efs_tags" {
 variable "efs_throughput_mode" {
   type        = string
   description = "throughput mode for EFS volumee"
-  default     = "burstable"
+  default     = "bursting"
 }
 
 variable "security_group_tags" {

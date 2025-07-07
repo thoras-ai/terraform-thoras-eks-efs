@@ -2,7 +2,7 @@ resource "aws_efs_file_system" "data" {
   creation_token  = local.efs_tags.Name
   encrypted       = true
   tags            = local.efs_tags
-  throughput_mode = "elastic"
+  throughput_mode = var.efs_throughput_mode
 }
 
 resource "aws_efs_mount_target" "data" {

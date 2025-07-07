@@ -46,6 +46,12 @@ variable "efs_tags" {
   default     = {}
 }
 
+variable "efs_throughput_mode" {
+  type        = string
+  description = "throughput mode for EFS volumee"
+  default     = "burstable"
+}
+
 variable "security_group_tags" {
   type        = map(string)
   description = "resource tags for EFS security group"
